@@ -44,7 +44,7 @@ const deptField: Field = {
   type: "select",
   options: DEPARTMENTS,
   required: true,
-  defaultValue: DEPARTMENTS[0],
+  defaultValue: DEPARTMENTS[0]!,
 };
 const yearField: Field = { name: "year", label: "Year", type: "number", defaultValue: 1, required: true };
 const semField: Field = { name: "semester", label: "Semester", type: "number", defaultValue: 1, required: true };
