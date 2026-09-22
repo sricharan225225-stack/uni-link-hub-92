@@ -25,7 +25,7 @@ export const Route = createFileRoute("/_authenticated/attendance")({
 
 function AttendancePage() {
   const { data, isLoading, error } = useAttendance();
-  const rows = (data ?? []) as Array<Record<string, any>>;
+  const rows = (data ?? []) as any[];
 
   const totals = useMemo(() => {
     const present = rows.reduce((s, r) => s + (r.present ?? 0), 0);

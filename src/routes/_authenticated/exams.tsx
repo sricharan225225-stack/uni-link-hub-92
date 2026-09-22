@@ -110,7 +110,7 @@ function ExamsPage() {
   const important = by("important_questions");
   const markGroups = ["2 Mark", "5 Mark", "10 Mark"].map((m) => ({
     mark: m,
-    items: important.filter((r) => (r.mark_type ?? "").toLowerCase().startsWith(m.split(" ")[0])),
+    items: important.filter((r) => (r.mark_type ?? "").toLowerCase().startsWith((m.split(" ")[0] ?? "").toLowerCase())),
   }));
   const units = Array.from(new Set(important.map((r) => r.unit).filter(Boolean))) as string[];
 

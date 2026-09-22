@@ -47,7 +47,7 @@ const signUpSchema = z
 
 const DEPARTMENTS = ["CSE", "ECE", "EEE", "Mechanical", "Civil", "IT", "Chemical", "Commerce", "Science", "Arts"];
 
-function FieldError({ message }: { message?: string }) {
+function FieldError({ message }: { message?: string | undefined }) {
   if (!message) return null;
   return <p className="mt-1 text-xs font-medium text-destructive">{message}</p>;
 }

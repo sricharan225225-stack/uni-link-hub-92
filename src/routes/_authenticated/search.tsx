@@ -7,12 +7,12 @@ import { CardSkeletonList, EmptyState } from "@/components/states";
 import { Badge } from "@/components/ui/badge";
 import { useExamResources, useImportantLinks, useMaterials, useNotices } from "@/lib/queries";
 
-type SearchParams = { q?: string };
+type SearchParams = { q: string };
 
 export const Route = createFileRoute("/_authenticated/search")({
   ssr: false,
   validateSearch: (search: Record<string, unknown>): SearchParams => ({
-    q: typeof search.q === "string" ? search.q.slice(0, 120) : undefined,
+    q: typeof search["q"] === "string" ? (search["q"] as string).slice(0, 120) : "",
   }),
   head: () => ({
     meta: [
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/_authenticated/search")({
 });
 
 function SearchPage() {
-  const { q = "" } = Route.useSearch();
+  const { q } = Route.useSearch();
   const notices = useNotices();
   const materials = useMaterials();
   const exams = useExamResources();
@@ -47,7 +47,7 @@ function SearchPage() {
       exams: (exams.data ?? []).filter((r) =>
         has(`${r.title} ${r.subject} ${r.department} ${r.body ?? ""} ${r.mark_type ?? ""}`),
       ),
-      links: ((links.data ?? []) as Array<Record<string, any>>).filter((l) =>
+      links: ((links.data ?? []) as any[]).filter((l) =>
         has(`${l.title} ${l.description ?? ""} ${l.category}`),
       ),
     };

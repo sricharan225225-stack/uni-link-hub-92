@@ -30,7 +30,7 @@ function TimetablePage() {
   const exams = useExamTimetable();
 
   const byDay = useMemo(() => {
-    const rows = (classes.data ?? []) as Array<Record<string, any>>;
+    const rows = (classes.data ?? []) as any[];
     return DAYS.map((d) => ({
       day: d,
       items: rows
@@ -40,7 +40,7 @@ function TimetablePage() {
   }, [classes.data]);
 
   const examRows = useMemo(() => {
-    const rows = (exams.data ?? []) as Array<Record<string, any>>;
+    const rows = (exams.data ?? []) as any[];
     return [...rows].sort((a, b) => String(a.exam_date).localeCompare(String(b.exam_date)));
   }, [exams.data]);
 

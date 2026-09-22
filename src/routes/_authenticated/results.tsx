@@ -32,10 +32,10 @@ export const Route = createFileRoute("/_authenticated/results")({
 
 function ResultsPage() {
   const { data, isLoading, error } = useResults();
-  const rows = (data ?? []) as Array<Record<string, any>>;
+  const rows = (data ?? []) as any[];
 
   const semesters = useMemo(() => {
-    const map = new Map<number, Array<Record<string, any>>>();
+    const map = new Map<number, any[]>();
     rows.forEach((r) => map.set(r.semester, [...(map.get(r.semester) ?? []), r]));
     return Array.from(map.entries()).sort((a, b) => b[0] - a[0]);
   }, [rows]);

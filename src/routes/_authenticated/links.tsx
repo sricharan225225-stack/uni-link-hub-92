@@ -23,10 +23,10 @@ export const Route = createFileRoute("/_authenticated/links")({
 
 function LinksPage() {
   const { data, isLoading, error } = useImportantLinks();
-  const rows = (data ?? []) as Array<Record<string, any>>;
+  const rows = (data ?? []) as any[];
 
   const groups = useMemo(() => {
-    const map = new Map<string, Array<Record<string, any>>>();
+    const map = new Map<string, any[]>();
     rows.forEach((r) => map.set(r.category, [...(map.get(r.category) ?? []), r]));
     return Array.from(map.entries());
   }, [rows]);
