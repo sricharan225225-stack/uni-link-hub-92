@@ -47,7 +47,7 @@ function SearchPage() {
       exams: (exams.data ?? []).filter((r) =>
         has(`${r.title} ${r.subject} ${r.department} ${r.body ?? ""} ${r.mark_type ?? ""}`),
       ),
-      links: ((links.data ?? []) as Array<Record<string, any>>).filter((l) =>
+      links: ((links.data ?? []) as any[]).filter((l) =>
         has(`${l.title} ${l.description ?? ""} ${l.category}`),
       ),
     };

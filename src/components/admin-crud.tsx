@@ -45,7 +45,7 @@ export type Field = {
   defaultValue?: string | number | boolean;
 };
 
-type Row = Record<string, any>;
+type Row = any;
 
 export function AdminCrud({
   table,

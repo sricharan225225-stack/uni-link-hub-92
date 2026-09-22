@@ -64,7 +64,7 @@ function StudentsTab() {
   });
 
   const rows = useMemo(() => {
-    const list = (data ?? []) as Array<Record<string, any>>;
+    const list = (data ?? []) as any[];
     if (!q.trim()) return list;
     const t = q.toLowerCase();
     return list.filter((p) =>
