@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { openMaterialFile } from "@/components/upload-material";
 import { useMaterials, type Material } from "@/lib/queries";
 
 export const Route = createFileRoute("/_authenticated/materials")({
@@ -54,7 +55,12 @@ function MaterialCard({ m }: { m: Material }) {
         {new Date(m.created_at).toLocaleDateString()}
       </p>
       <div className="mt-4">
-        {m.url ? (
+        {m.file_path ? (
+          <Button size="sm" className="rounded-xl" onClick={() => openMaterialFile(m.file_path!)}>
+            <Download className="mr-2 h-4 w-4" />
+            View / Download
+          </Button>
+        ) : m.url ? (
           <Button asChild size="sm" className="rounded-xl">
             <a href={m.url} target="_blank" rel="noreferrer">
               <Download className="mr-2 h-4 w-4" />

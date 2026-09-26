@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
 import { AdminCrud, type Field } from "@/components/admin-crud";
+import { UploadMaterialButton } from "@/components/upload-material";
 import { PageHeader } from "@/components/page-header";
 import { CardSkeletonList, EmptyState, ErrorState } from "@/components/states";
 import { Button } from "@/components/ui/button";
@@ -191,6 +192,13 @@ function AdminPage() {
         </TabsContent>
 
         <TabsContent value="materials">
+          <div className="surface mb-5 flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="font-semibold">Upload a file</p>
+              <p className="text-sm text-muted-foreground">PDFs, documents, slides or images — up to 50 MB.</p>
+            </div>
+            <UploadMaterialButton />
+          </div>
           <AdminCrud
             table="study_materials"
             title="study material"

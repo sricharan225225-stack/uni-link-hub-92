@@ -22,6 +22,8 @@ export type Material = {
   semester: number;
   file_type: string;
   url: string | null;
+  file_path?: string | null;
+  category?: string;
   description: string | null;
   downloads: number;
   created_at: string;
