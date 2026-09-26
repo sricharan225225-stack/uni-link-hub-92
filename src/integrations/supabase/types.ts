@@ -360,10 +360,12 @@ export type Database = {
       }
       study_materials: {
         Row: {
+          category: string
           created_at: string
           department: string
           description: string | null
           downloads: number
+          file_path: string | null
           file_type: string
           id: string
           semester: number
@@ -373,10 +375,12 @@ export type Database = {
           year: number
         }
         Insert: {
+          category?: string
           created_at?: string
           department?: string
           description?: string | null
           downloads?: number
+          file_path?: string | null
           file_type?: string
           id?: string
           semester?: number
@@ -386,10 +390,12 @@ export type Database = {
           year?: number
         }
         Update: {
+          category?: string
           created_at?: string
           department?: string
           description?: string | null
           downloads?: number
+          file_path?: string | null
           file_type?: string
           id?: string
           semester?: number
