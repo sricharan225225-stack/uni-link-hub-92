@@ -64,7 +64,7 @@ export function UploadMaterialButton() {
       xhr.send(body);
     });
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent): Promise<unknown> => {
     e.preventDefault();
     if (!f.title.trim() || !f.subject.trim()) return toast.error("Title and subject are required");
     if (!file) return toast.error("Please select a file");
