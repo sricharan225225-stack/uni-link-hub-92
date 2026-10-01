@@ -13,8 +13,8 @@ import { supabase } from "@/integrations/supabase/client";
 
 const DEPTS = ["CSE", "ECE", "EEE", "MECH", "CIVIL", "IT"];
 const CATEGORIES = ["Notes", "Slides", "Question Paper", "Assignment", "Lab Manual", "Reference"];
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
-const ANON = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
+const SUPABASE_URL = import.meta.env["VITE_SUPABASE_URL"] as string;
+const ANON = import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string;
 
 function fileTypeOf(f: File) {
   const n = f.name.toLowerCase();
@@ -51,7 +51,7 @@ export function UploadMaterialButton() {
       xhr.setRequestHeader("apikey", ANON);
       xhr.setRequestHeader("x-upsert", "false");
       xhr.setRequestHeader("Content-Type", body.type || "application/octet-stream");
-      xhr.upload.onprogress = (e) => e.lengthComputable && setProgress(Math.round((e.loaded / e.total) * 100));
+      xhr.upload.onprogress = (e) => { if (e.lengthComputable) setProgress(Math.round((e.loaded / e.total) * 100)); };
       xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) resolve();
         else {
@@ -190,6 +190,6 @@ export function UploadMaterialButton() {
 
 export async function openMaterialFile(filePath: string) {
   const { data, error } = await supabase.storage.from("study-materials").createSignedUrl(filePath, 600);
-  if (error || !data) return toast.error(error?.message ?? "Could not open file");
+  if (error || !data) { toast.error(error?.message ?? "Could not open file"); return; }
   window.open(data.signedUrl, "_blank", "noopener");
 }

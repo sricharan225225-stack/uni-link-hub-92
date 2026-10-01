@@ -1,0 +1,2 @@
+- [ ] Material upload in Admin → Materials
+- [ ] Hide Edit with Lovable badge
