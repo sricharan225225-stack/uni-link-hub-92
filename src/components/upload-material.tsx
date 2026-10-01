@@ -64,11 +64,11 @@ export function UploadMaterialButton() {
       xhr.send(body);
     });
 
-  const submit = async (e: React.FormEvent): Promise<unknown> => {
+  const submit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    if (!f.title.trim() || !f.subject.trim()) return toast.error("Title and subject are required");
-    if (!file) return toast.error("Please select a file");
-    if (file.size > 50 * 1024 * 1024) return toast.error("File must be under 50 MB");
+    if (!f.title.trim() || !f.subject.trim()) { toast.error("Title and subject are required"); return; }
+    if (!file) { toast.error("Please select a file"); return; }
+    if (file.size > 50 * 1024 * 1024) { toast.error("File must be under 50 MB"); return; }
     try {
       setProgress(0);
       const { data } = await supabase.auth.getSession();
