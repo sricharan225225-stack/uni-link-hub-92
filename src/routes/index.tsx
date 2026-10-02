@@ -200,6 +200,24 @@ function Landing() {
             </Button>
           </Link>
         </div>
+
+        <div className="surface fade-up mx-auto mt-6 max-w-xl rounded-3xl p-8 text-center shadow-[var(--shadow-lift)] sm:p-10">
+          <img
+            src="/founder.jpg"
+            alt="Charan Naidu - Founder of AU Hub"
+            loading="lazy"
+            width={768}
+            height={768}
+            className="mx-auto h-28 w-28 rounded-full border border-border object-cover shadow-[var(--shadow-soft)]"
+          />
+          <h3 className="mt-5 text-xl font-semibold">Charan Naidu</h3>
+          <p className="mt-1 text-sm font-medium uppercase tracking-wide text-primary">Founder &amp; Developer</p>
+          <p className="mt-1 text-xs text-muted-foreground">AU Hub – Student App</p>
+          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+            “AU Hub is designed to bring important student resources into one convenient platform, including
+            college notices, study materials, timetables, exam dates, results, attendance, and important AU links.”
+          </p>
+        </div>
       </section>
 
       <footer className="border-t border-border">
